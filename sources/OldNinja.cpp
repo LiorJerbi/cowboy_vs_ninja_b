@@ -1,4 +1,4 @@
-#include "oldninja.hpp"
+#include "OldNinja.hpp"
 
 using namespace ariel;
 using namespace std;

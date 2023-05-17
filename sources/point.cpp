@@ -23,6 +23,23 @@ string Point::print() const{
     return ans;
 }
 
-Point Point::moveTowards(const Point &src,const Point &dst,double dist){   // need to implement
+Point Point::moveTowards(const Point &src,const Point &dst,double dist){ 
+    if(dist<0)
+        throw invalid_argument("Cannot move negative moves!");
+    else if(dist==0)
     return src;
+    else{
+        //calc the distance from the dest.
+        double totdist = src.distance(dst);
+        if(totdist <= dist)
+            return dst;
+        
+        //calc the diff between distances.
+        double diff = dist / totdist;
+
+        //define colsest point.
+        double nx = src.getX() + (dst.getX() - src.getX()) * diff;
+        double ny = src.getY() + (dst.getY() - src.getY()) * diff;
+        return Point(nx,ny);
+    }
 }

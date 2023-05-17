@@ -1,6 +1,6 @@
 #pragma once
 
-#include "character.hpp"
+#include "Character.hpp"
 #include <string>
 namespace ariel{
 

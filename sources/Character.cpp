@@ -1,4 +1,4 @@
-#include "character.hpp"
+#include "Character.hpp"
 
 
 using namespace ariel;

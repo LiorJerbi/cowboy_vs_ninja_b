@@ -39,11 +39,8 @@ void Team::print() const{
     
 }
 Team::~Team(){
-    // if(_leader != nullptr)
-    // delete _leader;
-    // for (const auto& member : _squad) {
-    //     if(member != nullptr)
-    //     delete member;
-    // }
-    // _squad.clear();
+    delete _leader; // Delete the leader character
+    for (Character* member : _squad) {
+        delete member; // Delete each member character in the squad
+    }
 }

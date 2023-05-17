@@ -1,7 +1,7 @@
 #pragma once
 
-#include "ninja.hpp"
-#include "character.hpp"
+#include "Ninja.hpp"
+#include "Character.hpp"
 #include <string>
 namespace ariel{
 

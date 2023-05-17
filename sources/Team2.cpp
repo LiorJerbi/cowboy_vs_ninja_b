@@ -1,4 +1,4 @@
-#include "team2.hpp"
+#include "Team2.hpp"
 
 using namespace ariel;
 using namespace std;

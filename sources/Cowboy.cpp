@@ -1,4 +1,4 @@
-#include "cowboy.hpp"
+#include "Cowboy.hpp"
 
 using namespace ariel;
 using namespace std;

@@ -1,12 +1,12 @@
 #pragma once
 
-#include "ninja.hpp"
+#include "Ninja.hpp"
 #include <string>
 namespace ariel{
 
-class TrainedNinja: public Ninja{
+class YoungNinja: public Ninja{
     public:
-        TrainedNinja(const std::string& name,Point spot);
+        YoungNinja(const std::string &name,Point spot);
         void move(Character *enemy) override;
 };
 

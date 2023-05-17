@@ -1,4 +1,4 @@
-#include "smartteam.hpp"
+#include "SmartTeam.hpp"
 
 using namespace ariel;
 using namespace std;

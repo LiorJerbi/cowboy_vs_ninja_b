@@ -1,12 +1,12 @@
 #pragma once
 
 #include <vector>
-#include "character.hpp"
-#include "ninja.hpp"
-#include "oldninja.hpp"
-#include "youngninja.hpp"
-#include "trainedninja.hpp"
-#include "cowboy.hpp"
+#include "Character.hpp"
+#include "Ninja.hpp"
+#include "OldNinja.hpp"
+#include "YoungNinja.hpp"
+#include "TrainedNinja.hpp"
+#include "Cowboy.hpp"
 
 namespace ariel{
 
