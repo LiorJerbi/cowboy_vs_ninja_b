@@ -65,6 +65,7 @@ void Team2::attack(Team* enmy_team){
     }
 }
 void Team2::print() const{
+    cout << "Team details:" << endl;
     for(Character* member : getSquad()){
         if(Cowboy* cowboy = dynamic_cast<Cowboy*>(member)){     //member is type of Cowboy
             cout << cowboy->print() << endl;
