@@ -15,7 +15,6 @@ class Ninja: public Character{
         void slash(Character *enemy);
         int getSpeed() const;
         std::string print() const override;
-        virtual ~Ninja() = default;
 
 };
 
