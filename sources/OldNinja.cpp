@@ -6,5 +6,6 @@ using namespace std;
 
 OldNinja::OldNinja(const string& name,Point spot):Ninja(name,spot,150,8){};
 void OldNinja::move(Character *enemy){
-    
+    Point tmp = Point::moveTowards(getLocation(),enemy->getLocation(),getSpeed());
+    setLocation(tmp);
 }

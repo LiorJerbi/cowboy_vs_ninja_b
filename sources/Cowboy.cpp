@@ -1,4 +1,5 @@
 #include "Cowboy.hpp"
+#include "iostream"
 
 using namespace ariel;
 using namespace std;
@@ -7,7 +8,10 @@ using namespace std;
 Cowboy::Cowboy(const std::string& name,Point spot):Character(name,spot,110),_bullet_amount(6){};
 
 void Cowboy::shoot(Character* enemy){
-    if(getHp() <=0 && hasboolets()){
+    if(enemy->getHp() <= 0) throw runtime_error("Enemy already dead!");
+    if(getHp() <= 0) throw runtime_error("Cowboy is dead!");
+    if(enemy == this) throw runtime_error("Cannot shoot self!");
+    if(hasboolets()){
         _bullet_amount--;
         enemy->hit(10);
     }
@@ -18,6 +22,7 @@ bool Cowboy::hasboolets() const{
 }
 
 void Cowboy::reload(){
+    if(getHp() <= 0) throw runtime_error("Cowboy is dead!");
     _bullet_amount=6;
 }
 int Cowboy::getBullAmount() const{
@@ -26,10 +31,10 @@ int Cowboy::getBullAmount() const{
 string Cowboy::print() const{
     string ans = "C: ";
     if(getHp()>0){
-        ans += getName() + " " + to_string(getHp()) + " " + getLocation().print();
+        ans += getName() + " HP:" + to_string(getHp()) + " Location:" + getLocation().print();
     }
     else{
-        ans += "("+getName() + ") " + getLocation().print();
+        ans += "("+getName() + ") Location:" + getLocation().print();
     }
     return ans;
 }

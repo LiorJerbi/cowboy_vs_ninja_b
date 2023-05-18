@@ -13,6 +13,7 @@ class Character{
         Point _spot;
         int _hitpoints;
         std::string _name;
+        bool _appointed;
     public:
         Character(const std::string &name,Point spot,int hitpoints);
         Character(const Character &other);
@@ -21,13 +22,16 @@ class Character{
         double distance(Character *other) const;
         void hit(int dmg);
         int getHp() const;
+        bool isAppointed() const;
+        void setAppointed(bool mod);
         std::string getName() const;
         Point getLocation() const;
+        void setLocation(Point& newp);
         virtual std::string print() const = 0;
         Character(Character&& other) = delete;
         Character& operator=(Character&& other) = delete;
 
-        virtual ~Character();
+        virtual ~Character() = default;
 
 };
 

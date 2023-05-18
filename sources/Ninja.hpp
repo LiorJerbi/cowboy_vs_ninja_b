@@ -13,8 +13,9 @@ class Ninja: public Character{
         Ninja(const std::string& name,Point spot,int hitpoints, int speed);
         virtual void move(Character *enemy) = 0;
         void slash(Character *enemy);
+        int getSpeed() const;
         std::string print() const override;
-        
+        virtual ~Ninja() = default;
 
 };
 
