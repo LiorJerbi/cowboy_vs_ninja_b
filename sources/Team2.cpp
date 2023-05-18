@@ -32,9 +32,10 @@ Character* Team2::getVictim(const Team* att_team) const{
     return victim;
 }
 void Team2::attack(Team* enmy_team){
-    if(enmy_team == nullptr || enmy_team == this) throw runtime_error("Not valid enemy team!");
+    if(enmy_team == nullptr || enmy_team == this) throw invalid_argument("Not valid enemy team!");
     if(enmy_team->stillAlive() == 0) throw runtime_error("Enemy team already dead!");
     if(!(enmy_team->getLeader()->isAlive())) enmy_team->changeLeader();     //if attacked leader is dead switch to the closest live enemy
+    if(!(getLeader()->isAlive())) changeLeader();
 
     Character* victim = getVictim(enmy_team);           //get victim who is closest to the attacking leader
 

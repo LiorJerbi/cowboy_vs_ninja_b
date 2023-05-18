@@ -7,7 +7,7 @@ using namespace std;
 
 Team::Team(Character* leader){
     if(leader->isAppointed())
-        throw invalid_argument("Leader already appointed to another team!");
+        throw runtime_error("Leader already appointed to another team!");
     else{
         
         _leader = leader;
@@ -87,10 +87,11 @@ void Team::add(Character* member){
     member->setAppointed(true);
 }
 void Team::attack(Team* enmy_team){
-    if(enmy_team == nullptr || enmy_team == this) throw runtime_error("Not valid enemy team!");
+    if(enmy_team == nullptr || enmy_team == this) throw invalid_argument("Not valid enemy team!");
     if(enmy_team->stillAlive() == 0) throw runtime_error("Enemy team already dead!");
     if(!(enmy_team->_leader->isAlive())) enmy_team->changeLeader();     //if attacked leader is dead switch to the closest live enemy
-
+    if(!(getLeader()->isAlive())) changeLeader();
+    
     Character* victim = getVictim(enmy_team);           //get victim who is closest to the attacking leader
 
     for(Character* member : _squad){
@@ -110,7 +111,7 @@ void Team::attack(Team* enmy_team){
     for(Character* member : _squad){
         if(member->isAlive()){
             if(Ninja* ninja = dynamic_cast<Ninja*>(member)){     //member is type of Ninja
-                
+
                 if(ninja->distance(victim) < 1.0) ninja->slash(victim);
                 else ninja->move(victim);
 
@@ -121,7 +122,7 @@ void Team::attack(Team* enmy_team){
             }
         }
     }
-
+    
 }
 int Team::stillAlive() const{
     int alive = 0;
@@ -131,7 +132,7 @@ int Team::stillAlive() const{
     return alive;
 }
 void Team::print() const{
-    
+    cout << "Team details:" << endl;
     for(Character* member : _squad){
         if(Cowboy* cowboy = dynamic_cast<Cowboy*>(member)){     //member is type of Cowboy
             cout << cowboy->print() << endl;
@@ -153,11 +154,10 @@ void Team::setLeader(Character* newlead){
     _leader = newlead;
 }
 Team::~Team(){
-    delete _leader; // Delete the leader character
-    _leader = nullptr;
     for (Character* member : _squad) {
         delete member; // Delete each member character in the squad
     }
+    _leader = nullptr;
     _squad.clear();
 
 }
